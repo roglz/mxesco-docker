@@ -1,0 +1,9 @@
+fastapi
+numpy
+phonemizer
+pydub
+pymongo
+python-multipart
+transformers
+uvicorn
+git+https://github.com/openai/whisper.git
