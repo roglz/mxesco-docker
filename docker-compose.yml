@@ -1,20 +1,23 @@
 services:
   app:
+    # The main application service
     build: .
     ports:
-      - "8000:8000"
+      - "8000:8000"  # Map port 8000 on the host to port 8000 in the container
     volumes:
-      - .:/app
+      - .:/app  # Mount the current directory (host) to /app (container) for live code updates
     depends_on:
-      - mongo
+      - mongo  # Ensure the MongoDB service starts before the app
 
   mongo:
-    image: mongo:5.0
-    container_name: mongodb
+    # The MongoDB database service
+    image: mongo:5.0  # Use MongoDB version 5.0 as the container image
+    container_name: mongodb  # Name the MongoDB container for easier identification
     ports:
-      - "27017:27017"
+      - "27017:27017"  # Map port 27017 on the host to port 27017 in the container
     volumes:
-      - mongodb_data:/data/db
+      - mongodb_data:/data/db  # Use a named volume to persist database data
 
 volumes:
   mongodb_data:
+    # A named volume for persisting MongoDB data
